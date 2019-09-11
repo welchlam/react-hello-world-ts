@@ -1,9 +1,5 @@
 import * as React from 'react';
 import './Hello.css';
-import * as actions from '../actions/';
-import { StoreState } from '../types/index';
-import { connect, DispatchProp } from 'react-redux';
-import { Dispatch } from 'redux'
 
 export interface Props {
     name: string;
@@ -12,60 +8,24 @@ export interface Props {
     onDecrement?: () => void;
 }
 
-/*
-interface State {
-    currentEnthusiasm: number;
-}
-
-class Hello extends React.Component<Props, State> {
+class Hello extends React.Component<Props> {
     constructor(props: Props) {
         super(props);
-        this.state = { currentEnthusiasm: props.enthusiasmLevel || 1 };
     }
 
-    onIncrement = () => this.updateEnthusiasm(this.state.currentEnthusiasm + 1);
-    onDecrement = () => this.updateEnthusiasm(this.state.currentEnthusiasm - 1);
-
     render() {
-        const { name } = this.props;
-
-        if (this.state.currentEnthusiasm <= 0) {
-            throw new Error('You could be a little more enthusiastic. :D');
-        }
-
         return (
             <div className="hello">
                 <div className="greeting">
-                    Hello {name + getExclamationMarks(this.state.currentEnthusiasm)}
+                    Hello {this.props.name + getExclamationMarks(this.props.enthusiasmLevel || 1)}
                 </div>
-                <button onClick={this.onDecrement}>-</button>
-                <button onClick={this.onIncrement}>+</button>
+                <div>
+                    <button onClick={this.props.onDecrement}>-</button>
+                    <button onClick={this.props.onIncrement}>+</button>
+                </div>
             </div>
         );
     }
-
-    updateEnthusiasm(currentEnthusiasm: number) {
-        this.setState({ currentEnthusiasm });
-    }
-}
-*/
-
-function Hello({ name, enthusiasmLevel = 1, onIncrement, onDecrement }: Props) {
-    if (enthusiasmLevel <= 0) {
-        throw new Error('You could be a little more enthusiastic. :D');
-    }
-
-    return (
-        <div className="hello">
-            <div className="greeting">
-                Hello {name + getExclamationMarks(enthusiasmLevel)}
-            </div>
-            <div>
-                <button onClick={onDecrement}>-</button>
-                <button onClick={onIncrement}>+</button>
-            </div>
-        </div>
-    );
 }
 
 export default Hello;

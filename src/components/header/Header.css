@@ -1,0 +1,40 @@
+.nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav--logo {
+    display: inline-block;
+    margin-left: 5px;
+    margin-top: 2px
+}
+
+.nav--logo--link {
+    text-decoration: none;
+}
+
+.nav--logo--link img {
+    height: 2.5rem;
+}
+
+.nav--features {
+    display: inline-block;
+}
+
+.nav--features--feature {
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 0;
+    margin-top: 5px;
+}
+
+.nav--features--feature li {
+    list-style: none;
+    display: inline-block;
+    margin: 5px;
+    font-size: 15px;
+}
+
+.nav--features--feature li a {
+    text-decoration: none;
+}

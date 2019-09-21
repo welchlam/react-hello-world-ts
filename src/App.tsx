@@ -1,18 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Header from "./components/header/Header";
+import Sidebar, {Feature} from "./components/sidebar/Sidebar";
+import Main from "./components/main/Main.jsx";
+import Footer from "./components/footer/Footer";
 
-import Hello from "./components/Hello";
+function App() {
+    const features: Array<Feature> = [];
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Hello name="TypeScript" enthusiasmLevel={10} />
-      </header>
-    </div>
-  );
+    return (
+        <div className="app">
+            <header className="header">
+                <Header/>
+            </header>
+
+            <aside className="sidebar">
+                <Sidebar features={features} />
+            </aside>
+
+            <main className="main">
+                // @ts-ignore
+                <Main name="Welch W C Lin"/>
+            </main>
+
+            <footer className="footer">
+                <Footer/>
+            </footer>
+        </div>
+    );
 }
 
 export default App;

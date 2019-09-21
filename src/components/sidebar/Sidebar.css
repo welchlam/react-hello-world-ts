@@ -1,0 +1,19 @@
+.side {
+    padding: 10px;
+}
+
+.side--features {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.side--features li {
+    list-style: none;
+    margin: 5px;
+}
+
+.side--features li a {
+    text-decoration: none;
+    font-size: 30px;
+}

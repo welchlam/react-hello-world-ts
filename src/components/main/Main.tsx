@@ -3,9 +3,22 @@ import './Main.css'
 import LoginControl from "./login/LoginControl";
 import Feature from "./feature/Feature";
 import {connect} from "react-redux";
+import {IFeature} from "../../model/IFeature";
 
-class Main extends React.Component {
-    constructor(props) {
+export interface Props {
+    name: string;
+    features: IFeature[];
+    users: string[];
+}
+
+export interface State {
+    date: Date;
+}
+
+class Main extends React.Component<Props, State> {
+    private timerID: NodeJS.Timeout | undefined;
+
+    constructor(props: Props) {
         super(props);
         this.state = {
             date: new Date(),
@@ -40,7 +53,9 @@ class Main extends React.Component {
 
     componentWillUnmount() {
         console.log('welch-msg', 'Main will be destroyed')
-        clearInterval(this.timerID);
+        if (this.timerID instanceof NodeJS.Timeout) {
+            clearInterval(this.timerID);
+        }
     }
 
     tick() {
@@ -49,19 +64,16 @@ class Main extends React.Component {
         });
     }
 
-    handleClick(value, e) {
+    handleClick(value: any, e: any) {
         console.log('welch-msg-value', value);
         console.log('welch-msg-event', e);
         e.preventDefault();
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: Props) => {
     const { features, users } = state;
     return { features, users };
 };
 
-export default connect(
-    mapStateToProps,
-    null
-)(Main);
+export default connect(mapStateToProps)(Main);

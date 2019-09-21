@@ -1,10 +1,11 @@
 import {combineEpics, createEpicMiddleware} from "redux-observable";
-import {addUserEpic} from "../feature/epic";
+import {addFeatureEpic} from "../feature/epic";
 
 const rootEpic = combineEpics(
-    addUserEpic
+    addFeatureEpic
 );
 
 const epicMiddleware = createEpicMiddleware();
 epicMiddleware.run(rootEpic);
+
 export default epicMiddleware;

@@ -1,12 +1,11 @@
 import React from 'react';
 import './App.css';
 import Header from "./components/header/Header";
-import Sidebar, {Feature} from "./components/sidebar/Sidebar";
-import Main from "./components/main/Main.jsx";
+import Sidebar from "./components/sidebar/Sidebar";
+import Main from "./components/main/Main";
 import Footer from "./components/footer/Footer";
 
 function App() {
-    const features: Array<Feature> = [];
 
     return (
         <div className="app">
@@ -15,11 +14,10 @@ function App() {
             </header>
 
             <aside className="sidebar">
-                <Sidebar features={features} />
+                <Sidebar />
             </aside>
 
             <main className="main">
-                // @ts-ignore
                 <Main name="Welch W C Lin"/>
             </main>
 

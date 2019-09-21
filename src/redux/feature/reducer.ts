@@ -1,6 +1,8 @@
 import { Actions } from "./actions";
+import {IFeature} from "../../model/IFeature";
+import {IAction} from "../../model/IAction";
 
-const initialState = [{
+const initialState: Array<IFeature> = [{
     id: 1,
     name: 'feature 1',
     detail: 'feature 1 detail',
@@ -26,10 +28,10 @@ const initialState = [{
     user: 'user 4'
 }];
 
-export default function(state = initialState, action) {
+export default function(state: Array<IFeature> = initialState, action: IAction<number>): Array<IFeature> {
     switch (action.type) {
         case Actions.ADD_FEATURE: {
-            const {id} = action.payload;
+            const id = action.payload;
             const newFeature = {
                 id,
                 name: 'feature ' + id,
@@ -37,10 +39,11 @@ export default function(state = initialState, action) {
                 active: true,
                 user: 'user ' + id
             }
+            // @ts-ignore
             return [...state, newFeature];
         }
         case Actions.REMOVE_FEATURE: {
-            const {id} = action.payload;
+            const id = action.payload;
             return [...state].filter(item => item.id !== id);
         }
         default:

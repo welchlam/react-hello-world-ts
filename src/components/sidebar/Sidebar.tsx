@@ -1,17 +1,10 @@
 import React from 'react';
 import {connect} from "react-redux";
 import './Sidebar.css';
-
-export interface Feature {
-    id: number,
-    name: string,
-    detail: string,
-    active: boolean,
-    user: string
-}
+import { IFeature } from '../../model/IFeature';
 
 export interface Props {
-    features: Array<Feature>
+    features: IFeature[]
 }
 
 class Sidebar extends React.Component<Props> {
@@ -41,7 +34,4 @@ const mapStateToProps = (state: Props) => {
     return { features };
 };
 
-export default connect(
-    mapStateToProps,
-    null
-)(Sidebar);
+export default connect(mapStateToProps)(Sidebar);

@@ -1,7 +1,14 @@
 import React from 'react';
 
-export default class LoginControl extends React.Component {
-    constructor(props) {
+export interface Props {
+}
+
+export interface State {
+    isLoggedIn: boolean;
+}
+
+export default class LoginControl extends React.Component<Props, State> {
+    constructor(props: Props) {
         super(props);
         this.state = {isLoggedIn: false};
         this.handleLoginClick = this.handleLoginClick.bind(this);

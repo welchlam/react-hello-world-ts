@@ -10,9 +10,16 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 
 import {addFeature, removeFeature} from "../../../redux/feature/actions";
+import {IFeature} from "../../../model/IFeature";
 
-class Feature extends React.Component{
-    constructor(props) {
+export interface Props {
+    features: IFeature[];
+    addFeature: (id: number) => void;
+    removeFeature: (id: number) => void;
+}
+
+class Feature extends React.Component<Props>{
+    constructor(props: Props) {
         super(props);
         this.handleAddFeature = this.handleAddFeature.bind(this);
         this.handleRemoveFeature = this.handleRemoveFeature.bind(this);
@@ -66,7 +73,7 @@ class Feature extends React.Component{
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: Props) => {
     const { features } = state;
     return { features };
 };
